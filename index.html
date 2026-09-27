@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vladyslav Katsel — vkatsel</title>
+  <meta name="description" content="Personal space of Vladyslav Katsel. Software engineering, academic tooling, and open-source projects.">
+  
+  <!-- Google Search Console Verification Tag -->
+  <meta name="google-site-verification" content="aEbnSVAT5-mh2hJIc8EtZsvRGz0whY2GfawaGZKs8vk" />
+
+  <style>
+    :root {
+      --bg: #07070a;
+      --card-bg: rgba(18, 18, 24, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(255, 255, 255, 0.18);
+      --text: #f0f2f5;
+      --text-muted: #8a8f98;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.12);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Subtle background grid pattern */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient glow */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 300px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    /* Card styling */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--card-border-hover);
+    }
+
+    /* Header */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    /* Links & Projects */
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .project-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .project-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .project-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .arrow-icon {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .project-link:hover .arrow-icon {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 0 0.5rem;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <div class="card">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Kyiv School of Economics &bull; Software Engineering</span>
+      </div>
+
+      <h1>Vladyslav Katsel</h1>
+      <p class="bio">
+        Engineering developer tools, academic productivity systems, and clean software architectures.
+      </p>
+
+      <div class="section-title">Projects &amp; Presence</div>
+
+      <div class="links-list">
+        <a href="https://vkatsel.github.io/deadliner/" class="project-link" target="_blank" rel="noopener noreferrer">
+          <div class="project-info">
+            <span class="project-name">
+              Deadliner
+              <span style="font-size: 0.7rem; font-family: var(--font-mono); color: #3b82f6; background: rgba(59, 130, 246, 0.1); padding: 1px 6px; border-radius: 4px;">App</span>
+            </span>
+            <span class="project-desc">Academic calendar &amp; deadline sync engine for Moodle, Classroom, and KSE</span>
+          </div>
+          <span class="arrow-icon">&rarr;</span>
+        </a>
+
+        <a href="https://github.com/vkatsel" class="project-link" target="_blank" rel="noopener noreferrer">
+          <div class="project-info">
+            <span class="project-name">GitHub</span>
+            <span class="project-desc">@vkatsel &bull; Repositories, open source, and experiments</span>
+          </div>
+          <span class="arrow-icon">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <span>&copy; vkatsel.github.io</span>
+      <a href="https://github.com/vkatsel/vkatsel.github.io" target="_blank" rel="noopener noreferrer">source</a>
+    </footer>
+  </main>
+
+</body>
+</html>
