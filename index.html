@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vladyslav Katsel — vkatsel</title>
-  <meta name="description" content="Personal space of Vladyslav Katsel. Software engineering, academic tooling, and open-source projects.">
+  <title>Вадим Кацель — Vadym Katsel</title>
+  <meta name="description" content="Вадим Кацель (Vadym Katsel) — Software Engineering @ Kyiv School of Economics.">
   
-  <!-- Google Search Console Verification Tag -->
+  <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="aEbnSVAT5-mh2hJIc8EtZsvRGz0whY2GfawaGZKs8vk" />
 
   <style>
     :root {
-      --bg: #07070a;
-      --card-bg: rgba(18, 18, 24, 0.7);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-border-hover: rgba(255, 255, 255, 0.18);
-      --text: #f0f2f5;
-      --text-muted: #8a8f98;
-      --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.12);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif;
-      --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+      --bg: #ffffff;
+      --text: #111827;
+      --text-muted: #4b5563;
+      --text-subtle: #6b7280;
+      --border: #e5e7eb;
+      --border-hover: #111827;
+      --link: #111827;
+      --tag-bg: #f3f4f6;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
     }
 
     * {
@@ -33,238 +33,196 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 4rem 1.5rem;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1.25rem;
-      position: relative;
-      overflow-x: hidden;
-      line-height: 1.6;
     }
 
-    /* Subtle background grid pattern */
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Ambient glow */
-    body::after {
-      content: "";
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 500px;
-      height: 300px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
+    main {
       width: 100%;
-      max-width: 580px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
+      max-width: 560px;
     }
 
-    /* Card styling */
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 2rem;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-      transition: border-color 0.25s ease;
-    }
-
-    .card:hover {
-      border-color: var(--card-border-hover);
-    }
-
-    /* Header */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.02em;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
+    header {
+      margin-bottom: 2.5rem;
     }
 
     h1 {
-      font-size: 1.85rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.25rem;
     }
 
-    .bio {
+    .tagline {
       font-size: 0.95rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .section-title {
+    .meta {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    section {
+      margin-bottom: 2.25rem;
+    }
+
+    h2 {
       font-family: var(--font-mono);
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 0.85rem;
+      color: var(--text-subtle);
+      margin-bottom: 1rem;
     }
 
-    /* Links & Projects */
-    .links-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.15s ease;
     }
 
-    .project-link {
+    .project-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .project-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0.9rem 1.1rem;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.2s ease;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
     }
 
-    .project-link:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.15);
-      transform: translateY(-1px);
-    }
-
-    .project-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .project-name {
-      font-size: 0.95rem;
+    .project-title {
+      font-size: 1rem;
       font-weight: 600;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: var(--text);
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--tag-bg);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      color: var(--text-muted);
     }
 
     .project-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .arrow-icon {
-      color: var(--text-muted);
-      font-family: var(--font-mono);
       font-size: 0.9rem;
-      transition: transform 0.2s ease, color 0.2s ease;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
     }
 
-    .project-link:hover .arrow-icon {
-      color: #ffffff;
-      transform: translateX(3px);
-    }
-
-    /* Footer */
-    footer {
+    .project-links {
       display: flex;
-      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      transition: text-decoration-color 0.15s ease;
+    }
+
+    a:hover {
+      text-decoration-color: var(--link);
+    }
+
+    ul.clean-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    ul.clean-list li {
+      font-size: 0.9rem;
+      display: flex;
       align-items: center;
+      gap: 0.75rem;
+    }
+
+    .list-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      width: 70px;
+    }
+
+    footer {
+      margin-top: 3rem;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--text-muted);
-      padding: 0 0.5rem;
-    }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    footer a:hover {
-      color: #ffffff;
+      color: var(--text-subtle);
     }
   </style>
 </head>
 <body>
 
-  <main class="container">
-    <div class="card">
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span>Kyiv School of Economics &bull; Software Engineering</span>
+  <main>
+    <header>
+      <h1>Вадим Кацель</h1>
+      <p class="tagline">Software Engineering &bull; Kyiv School of Economics</p>
+      <p class="meta">vkatsel.github.io</p>
+    </header>
+
+    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem;">
+      Розробка інженерних рішень, інструментів автоматизації та академічної продуктивності.
+    </p>
+
+    <section>
+      <h2>Проєкти</h2>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Deadliner</span>
+          <span class="project-tag">CLI / Open Source</span>
+        </div>
+        <p class="project-desc">
+          Агрегатор академічних завдань і розкладу (Moodle, Google Classroom, розклад KSE) із прямою синхронізацією в Google Календар.
+        </p>
+        <div class="project-links">
+          <a href="https://vkatsel.github.io/deadliner/" target="_blank" rel="noopener noreferrer">Лендинг &amp; Доки &rarr;</a>
+          <a href="https://github.com/vkatsel/deadliner" target="_blank" rel="noopener noreferrer">Репозиторій &rarr;</a>
+        </div>
       </div>
+    </section>
 
-      <h1>Vladyslav Katsel</h1>
-      <p class="bio">
-        Engineering developer tools, academic productivity systems, and clean software architectures.
-      </p>
-
-      <div class="section-title">Projects &amp; Presence</div>
-
-      <div class="links-list">
-        <a href="https://vkatsel.github.io/deadliner/" class="project-link" target="_blank" rel="noopener noreferrer">
-          <div class="project-info">
-            <span class="project-name">
-              Deadliner
-              <span style="font-size: 0.7rem; font-family: var(--font-mono); color: #3b82f6; background: rgba(59, 130, 246, 0.1); padding: 1px 6px; border-radius: 4px;">App</span>
-            </span>
-            <span class="project-desc">Academic calendar &amp; deadline sync engine for Moodle, Classroom, and KSE</span>
-          </div>
-          <span class="arrow-icon">&rarr;</span>
-        </a>
-
-        <a href="https://github.com/vkatsel" class="project-link" target="_blank" rel="noopener noreferrer">
-          <div class="project-info">
-            <span class="project-name">GitHub</span>
-            <span class="project-desc">@vkatsel &bull; Repositories, open source, and experiments</span>
-          </div>
-          <span class="arrow-icon">&rarr;</span>
-        </a>
-      </div>
-    </div>
+    <section>
+      <h2>Контакти та лінки</h2>
+      <ul class="clean-list">
+        <li>
+          <span class="list-label">GitHub</span>
+          <a href="https://github.com/vkatsel" target="_blank" rel="noopener noreferrer">github.com/vkatsel</a>
+        </li>
+        <li>
+          <span class="list-label">Email</span>
+          <a href="mailto:vkatsel@kse.org.ua">vkatsel@kse.org.ua</a>
+        </li>
+      </ul>
+    </section>
 
     <footer>
-      <span>&copy; vkatsel.github.io</span>
-      <a href="https://github.com/vkatsel/vkatsel.github.io" target="_blank" rel="noopener noreferrer">source</a>
+      <span>&copy; 2026 Вадим Кацель</span>
     </footer>
   </main>
 
